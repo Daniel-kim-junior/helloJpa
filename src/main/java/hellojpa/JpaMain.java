@@ -19,11 +19,11 @@ public class JpaMain {
 
 
            Member member1 = em.find(Member.class, 150L);
-           member1.setName("Zzzzz");
+           member1.setName("AAAA");
 
-//           em.persist(member1);
-//           em.persist(member2);
+            em.close();
            System.out.println("===================");
+           Member member2 = em.find(Member.class, 150L);
 
            tx.commit();
        } catch (Exception e) {
