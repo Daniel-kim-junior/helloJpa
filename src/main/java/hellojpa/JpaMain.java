@@ -16,6 +16,7 @@ public class JpaMain {
        tx.begin();
 
        try {
+<<<<<<< HEAD
 
 
            Member member1 = em.find(Member.class, 150L);
@@ -25,8 +26,11 @@ public class JpaMain {
            System.out.println("===================");
            Member member2 = em.find(Member.class, 150L);
 
+=======
+>>>>>>> fa46f02 (TIL : JPA annotation)
            tx.commit();
        } catch (Exception e) {
+           System.out.println(e);
            tx.rollback();
        } finally {
            em.close();

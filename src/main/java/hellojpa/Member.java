@@ -1,34 +1,44 @@
+
 package hellojpa;
 
+import java.time.LocalDateTime;
+
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.Id;
+import jakarta.persistence.Lob;
+import jakarta.persistence.Table;
+import jakarta.persistence.Temporal;
+import jakarta.persistence.TemporalType;
+import jakarta.persistence.Transient;
 
 @Entity
+
 public class Member {
     @Id
     private Long id;
     private String name;
 
-    public Member() {}
-
+    Member(){}
     public Member(Long id, String name) {
         this.id = id;
         this.name = name;
     }
+    @Enumerated(EnumType.STRING)
+    private RoleType roleType;
+    @Temporal(TemporalType.TIMESTAMP)
+    private LocalDateTime now_time;
 
-    public Long getId() {
-        return id;
-    }
+    @Temporal(TemporalType.TIMESTAMP)
+    private LocalDateTime created_time;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    @Temporal(TemporalType.TIMESTAMP)
+    private LocalDateTime remove_time;
+   @Lob
+    private String description;
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
+   @Transient
+    private int tmp;
 }
+>>>>>>> fa46f02 (TIL : JPA annotation)
