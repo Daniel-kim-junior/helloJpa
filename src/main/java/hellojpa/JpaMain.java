@@ -16,18 +16,9 @@ public class JpaMain {
        tx.begin();
 
        try {
-<<<<<<< HEAD
-
-
-           Member member1 = em.find(Member.class, 150L);
-           member1.setName("AAAA");
-
-            em.close();
-           System.out.println("===================");
-           Member member2 = em.find(Member.class, 150L);
-
-=======
->>>>>>> fa46f02 (TIL : JPA annotation)
+            Member member = new Member();
+            member.setName("C");
+            em.persist(member);
            tx.commit();
        } catch (Exception e) {
            System.out.println(e);

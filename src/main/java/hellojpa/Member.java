@@ -6,17 +6,28 @@ import java.time.LocalDateTime;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Lob;
-import jakarta.persistence.Table;
+import jakarta.persistence.SequenceGenerator;
+import jakarta.persistence.TableGenerator;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 import jakarta.persistence.Transient;
 
-@Entity
 
+@Entity
+@SequenceGenerator(
+        name = "MEMBER_SEQ_GENERATOR",
+        sequenceName = "MEMBER_SEQ",
+        initialValue = 1,
+        allocationSize = 50
+)
 public class Member {
     @Id
+    @GeneratedValue(strategy = GenerationType.TABLE,
+                    generator = "MEMBER_SEQ_GENERATOR")
     private Long id;
     private String name;
 
@@ -38,7 +49,10 @@ public class Member {
    @Lob
     private String description;
 
-   @Transient
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    @Transient
     private int tmp;
 }
->>>>>>> fa46f02 (TIL : JPA annotation)
